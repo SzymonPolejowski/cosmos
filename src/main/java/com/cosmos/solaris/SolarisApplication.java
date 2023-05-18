@@ -8,6 +8,7 @@ public class SolarisApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SolarisApplication.class, args);
+		System.out.println("Twoja stara");
 	}
 
 }
