@@ -1,6 +1,8 @@
 package com.cosmos.solaris.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -12,9 +14,11 @@ public class MotherboardsEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "motherboard_model_id", nullable = false)
+	@JsonIgnore
 	private int motherboardModelId;
 	@Basic
 	@Column(name = "model", nullable = true, length = -1)
+	@JsonProperty("motherboardModel")
 	private String model;
 	@OneToMany(mappedBy = "motherboardsByMotherboardModelId")
 	@JsonBackReference

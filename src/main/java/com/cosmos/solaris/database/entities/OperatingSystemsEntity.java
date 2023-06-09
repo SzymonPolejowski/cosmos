@@ -1,6 +1,8 @@
 package com.cosmos.solaris.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -12,9 +14,11 @@ public class OperatingSystemsEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "os_id", nullable = false)
+	@JsonIgnore
 	private int osId;
 	@Basic
 	@Column(name = "name", nullable = true, length = -1)
+	@JsonProperty("operatingSystem")
 	private String name;
 	@OneToMany(mappedBy = "operatingSystemsByOsId")
 	@JsonBackReference

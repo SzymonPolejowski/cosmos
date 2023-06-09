@@ -1,7 +1,6 @@
 package com.cosmos.solaris.database.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -19,6 +18,7 @@ public class DutEntity {
 	private String name;
 	@Basic
 	@Column(name = "project_id", nullable = true, insertable=false, updatable=false)
+	@JsonIgnore
 	private int projectId;
 	@Basic
 	@Column(name = "ip_adress", nullable = true, length = 255)
@@ -37,6 +37,7 @@ public class DutEntity {
 	private String description;
 	@Basic
 	@Column(name = "controller_id", nullable = true, insertable=false, updatable=false)
+	@JsonIgnore
 	private int controllerId;
 	@Basic
 	@Column(name = "mac_adress", nullable = true, length = 255)
@@ -46,6 +47,7 @@ public class DutEntity {
 	private String kvmIp;
 	@Basic
 	@Column(name = "wps_id", nullable = true, insertable=false, updatable=false)
+	@JsonIgnore
 	private int wpsId;
 	@Basic
 	@Column(name = "outlet", nullable = false)
@@ -55,12 +57,14 @@ public class DutEntity {
 	private String bmcAdress;
 	@Basic
 	@Column(name = "os_id", nullable = true, insertable=false, updatable=false)
+	@JsonIgnore
 	private int osId;
 	@Basic
 	@Column(name = "location", nullable = true, length = 255)
 	private String location;
 	@Basic
 	@Column(name = "motherboard_model_id", nullable = true, insertable=false, updatable=false)
+	@JsonIgnore
 	private int motherboardModelId;
 	@Basic
 	@Column(name = "motherboard_serial_number", nullable = true, length = 255)
@@ -68,25 +72,31 @@ public class DutEntity {
 	@ManyToOne
 	@JoinColumn(name = "project_id", referencedColumnName = "project_id")
 	@JsonManagedReference
+	@JsonUnwrapped
 	private ProjectsEntity projectsByProjectId;
 	@ManyToOne
 	@JoinColumn(name = "controller_id", referencedColumnName = "controller_id")
 	@JsonManagedReference
+	@JsonProperty("controller")
 	private ControllersEntity controllersByControllerId;
 	@ManyToOne
 	@JoinColumn(name = "wps_id", referencedColumnName = "wps_id")
 	@JsonManagedReference
+	@JsonUnwrapped
 	private PowerSwitchesEntity powerSwitchesByWpsId;
 	@ManyToOne
 	@JoinColumn(name = "os_id", referencedColumnName = "os_id")
 	@JsonManagedReference
+	@JsonUnwrapped
 	private OperatingSystemsEntity operatingSystemsByOsId;
 	@ManyToOne
 	@JoinColumn(name = "motherboard_model_id", referencedColumnName = "motherboard_model_id")
 	@JsonManagedReference
+	@JsonUnwrapped
 	private MotherboardsEntity motherboardsByMotherboardModelId;
 	@OneToMany(mappedBy = "dutByDutId")
 	@JsonManagedReference
+	@JsonProperty("equipment")
 	private Collection<EqLinksEntity> eqLinksByDutId;
 
 	public int getDutId() {

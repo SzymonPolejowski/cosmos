@@ -1,7 +1,6 @@
 package com.cosmos.solaris.database.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -12,12 +11,15 @@ public class EqLinksEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "ID", nullable = false)
+	@JsonIgnore
 	private int id;
 	@Basic
 	@Column(name = "dut_id", nullable = false, insertable=false, updatable=false)
+	@JsonIgnore
 	private int dutId;
 	@Basic
 	@Column(name = "eq_id", nullable = false, insertable=false, updatable=false)
+	@JsonIgnore
 	private int eqId;
 	@ManyToOne
 	@JoinColumn(name = "dut_id", referencedColumnName = "dut_id", nullable = false)
@@ -26,6 +28,7 @@ public class EqLinksEntity {
 	@ManyToOne
 	@JoinColumn(name = "eq_id", referencedColumnName = "eq_id", nullable = false)
 	@JsonManagedReference
+	@JsonUnwrapped
 	private EqTypeEntity eqTypeByEqId;
 
 	public int getId() {
