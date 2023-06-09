@@ -1,6 +1,7 @@
 package com.cosmos.solaris.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -24,7 +25,7 @@ public class EqLinksEntity {
 	private DutEntity dutByDutId;
 	@ManyToOne
 	@JoinColumn(name = "eq_id", referencedColumnName = "eq_id", nullable = false)
-	@JsonBackReference
+	@JsonManagedReference
 	private EqTypeEntity eqTypeByEqId;
 
 	public int getId() {
