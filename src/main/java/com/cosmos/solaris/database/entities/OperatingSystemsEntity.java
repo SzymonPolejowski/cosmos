@@ -1,5 +1,6 @@
 package com.cosmos.solaris.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -16,6 +17,7 @@ public class OperatingSystemsEntity {
 	@Column(name = "name", nullable = true, length = -1)
 	private String name;
 	@OneToMany(mappedBy = "operatingSystemsByOsId")
+	@JsonBackReference
 	private Collection<DutEntity> dutsByOsId;
 
 	public int getOsId() {

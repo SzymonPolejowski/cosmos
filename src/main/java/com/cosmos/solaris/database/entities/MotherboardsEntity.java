@@ -1,5 +1,6 @@
 package com.cosmos.solaris.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -16,6 +17,7 @@ public class MotherboardsEntity {
 	@Column(name = "model", nullable = true, length = -1)
 	private String model;
 	@OneToMany(mappedBy = "motherboardsByMotherboardModelId")
+	@JsonBackReference
 	private Collection<DutEntity> dutsByMotherboardModelId;
 
 	public int getMotherboardModelId() {

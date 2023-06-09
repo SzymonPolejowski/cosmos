@@ -1,5 +1,6 @@
 package com.cosmos.solaris.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -16,6 +17,7 @@ public class PowerSwitchesEntity {
 	@Column(name = "ip_adress", nullable = true, length = 255)
 	private String ipAdress;
 	@OneToMany(mappedBy = "powerSwitchesByWpsId")
+	@JsonBackReference
 	private Collection<DutEntity> dutsByWpsId;
 
 	public int getWpsId() {

@@ -1,5 +1,6 @@
 package com.cosmos.solaris.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -16,6 +17,7 @@ public class EqTypeEntity {
 	@Column(name = "name", nullable = false, length = -1)
 	private String name;
 	@OneToMany(mappedBy = "eqTypeByEqId")
+	@JsonBackReference
 	private Collection<EqLinksEntity> eqLinksByEqId;
 
 	public int getEqId() {

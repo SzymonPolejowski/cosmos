@@ -1,5 +1,6 @@
 package com.cosmos.solaris.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -16,6 +17,7 @@ public class ProjectsEntity {
 	@Column(name = "name", nullable = true, length = -1)
 	private String name;
 	@OneToMany(mappedBy = "projectsByProjectId")
+	@JsonBackReference
 	private Collection<DutEntity> dutsByProjectId;
 
 	public int getProjectId() {

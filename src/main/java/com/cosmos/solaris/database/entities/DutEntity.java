@@ -1,5 +1,7 @@
 package com.cosmos.solaris.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -16,8 +18,8 @@ public class DutEntity {
 	@Column(name = "name", nullable = true, length = 255)
 	private String name;
 	@Basic
-	@Column(name = "project_id", nullable = true)
-	private Integer projectId;
+	@Column(name = "project_id", nullable = true, insertable=false, updatable=false)
+	private int projectId;
 	@Basic
 	@Column(name = "ip_adress", nullable = true, length = 255)
 	private String ipAdress;
@@ -34,8 +36,8 @@ public class DutEntity {
 	@Column(name = "description", nullable = true, length = -1)
 	private String description;
 	@Basic
-	@Column(name = "controller_id", nullable = true)
-	private Integer controllerId;
+	@Column(name = "controller_id", nullable = true, insertable=false, updatable=false)
+	private int controllerId;
 	@Basic
 	@Column(name = "mac_adress", nullable = true, length = 255)
 	private String macAdress;
@@ -43,8 +45,8 @@ public class DutEntity {
 	@Column(name = "kvm_ip", nullable = true, length = 255)
 	private String kvmIp;
 	@Basic
-	@Column(name = "wps_id", nullable = true)
-	private Integer wpsId;
+	@Column(name = "wps_id", nullable = true, insertable=false, updatable=false)
+	private int wpsId;
 	@Basic
 	@Column(name = "outlet", nullable = false)
 	private int outlet;
@@ -52,33 +54,39 @@ public class DutEntity {
 	@Column(name = "bmc_adress", nullable = true, length = 255)
 	private String bmcAdress;
 	@Basic
-	@Column(name = "os_id", nullable = true)
-	private Integer osId;
+	@Column(name = "os_id", nullable = true, insertable=false, updatable=false)
+	private int osId;
 	@Basic
 	@Column(name = "location", nullable = true, length = 255)
 	private String location;
 	@Basic
-	@Column(name = "motherboard_model_id", nullable = true)
-	private Integer motherboardModelId;
+	@Column(name = "motherboard_model_id", nullable = true, insertable=false, updatable=false)
+	private int motherboardModelId;
 	@Basic
 	@Column(name = "motherboard_serial_number", nullable = true, length = 255)
 	private String motherboardSerialNumber;
 	@ManyToOne
 	@JoinColumn(name = "project_id", referencedColumnName = "project_id")
+	@JsonManagedReference
 	private ProjectsEntity projectsByProjectId;
 	@ManyToOne
 	@JoinColumn(name = "controller_id", referencedColumnName = "controller_id")
+	@JsonManagedReference
 	private ControllersEntity controllersByControllerId;
 	@ManyToOne
 	@JoinColumn(name = "wps_id", referencedColumnName = "wps_id")
+	@JsonManagedReference
 	private PowerSwitchesEntity powerSwitchesByWpsId;
 	@ManyToOne
 	@JoinColumn(name = "os_id", referencedColumnName = "os_id")
+	@JsonManagedReference
 	private OperatingSystemsEntity operatingSystemsByOsId;
 	@ManyToOne
 	@JoinColumn(name = "motherboard_model_id", referencedColumnName = "motherboard_model_id")
+	@JsonManagedReference
 	private MotherboardsEntity motherboardsByMotherboardModelId;
 	@OneToMany(mappedBy = "dutByDutId")
+	@JsonManagedReference
 	private Collection<EqLinksEntity> eqLinksByDutId;
 
 	public int getDutId() {
@@ -97,11 +105,11 @@ public class DutEntity {
 		this.name = name;
 	}
 
-	public Integer getProjectId() {
+	public int getProjectId() {
 		return projectId;
 	}
 
-	public void setProjectId(Integer projectId) {
+	public void setProjectId(int projectId) {
 		this.projectId = projectId;
 	}
 
@@ -145,11 +153,11 @@ public class DutEntity {
 		this.description = description;
 	}
 
-	public Integer getControllerId() {
+	public int getControllerId() {
 		return controllerId;
 	}
 
-	public void setControllerId(Integer controllerId) {
+	public void setControllerId(int controllerId) {
 		this.controllerId = controllerId;
 	}
 
@@ -169,11 +177,11 @@ public class DutEntity {
 		this.kvmIp = kvmIp;
 	}
 
-	public Integer getWpsId() {
+	public int getWpsId() {
 		return wpsId;
 	}
 
-	public void setWpsId(Integer wpsId) {
+	public void setWpsId(int wpsId) {
 		this.wpsId = wpsId;
 	}
 
@@ -193,11 +201,11 @@ public class DutEntity {
 		this.bmcAdress = bmcAdress;
 	}
 
-	public Integer getOsId() {
+	public int getOsId() {
 		return osId;
 	}
 
-	public void setOsId(Integer osId) {
+	public void setOsId(int osId) {
 		this.osId = osId;
 	}
 
@@ -209,11 +217,11 @@ public class DutEntity {
 		this.location = location;
 	}
 
-	public Integer getMotherboardModelId() {
+	public int getMotherboardModelId() {
 		return motherboardModelId;
 	}
 
-	public void setMotherboardModelId(Integer motherboardModelId) {
+	public void setMotherboardModelId(int motherboardModelId) {
 		this.motherboardModelId = motherboardModelId;
 	}
 
@@ -230,7 +238,7 @@ public class DutEntity {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		DutEntity dutEntity = (DutEntity) o;
-		return dutId == dutEntity.dutId && state == dutEntity.state && outlet == dutEntity.outlet && Objects.equals(name, dutEntity.name) && Objects.equals(projectId, dutEntity.projectId) && Objects.equals(ipAdress, dutEntity.ipAdress) && Objects.equals(owner, dutEntity.owner) && Objects.equals(takenBy, dutEntity.takenBy) && Objects.equals(description, dutEntity.description) && Objects.equals(controllerId, dutEntity.controllerId) && Objects.equals(macAdress, dutEntity.macAdress) && Objects.equals(kvmIp, dutEntity.kvmIp) && Objects.equals(wpsId, dutEntity.wpsId) && Objects.equals(bmcAdress, dutEntity.bmcAdress) && Objects.equals(osId, dutEntity.osId) && Objects.equals(location, dutEntity.location) && Objects.equals(motherboardModelId, dutEntity.motherboardModelId) && Objects.equals(motherboardSerialNumber, dutEntity.motherboardSerialNumber);
+		return dutId == dutEntity.dutId && projectId == dutEntity.projectId && state == dutEntity.state && controllerId == dutEntity.controllerId && wpsId == dutEntity.wpsId && outlet == dutEntity.outlet && osId == dutEntity.osId && motherboardModelId == dutEntity.motherboardModelId && Objects.equals(name, dutEntity.name) && Objects.equals(ipAdress, dutEntity.ipAdress) && Objects.equals(owner, dutEntity.owner) && Objects.equals(takenBy, dutEntity.takenBy) && Objects.equals(description, dutEntity.description) && Objects.equals(macAdress, dutEntity.macAdress) && Objects.equals(kvmIp, dutEntity.kvmIp) && Objects.equals(bmcAdress, dutEntity.bmcAdress) && Objects.equals(location, dutEntity.location) && Objects.equals(motherboardSerialNumber, dutEntity.motherboardSerialNumber);
 	}
 
 	@Override

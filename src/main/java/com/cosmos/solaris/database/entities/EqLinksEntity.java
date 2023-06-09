@@ -1,5 +1,6 @@
 package com.cosmos.solaris.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -12,16 +13,18 @@ public class EqLinksEntity {
 	@Column(name = "ID", nullable = false)
 	private int id;
 	@Basic
-	@Column(name = "dut_id", nullable = false)
+	@Column(name = "dut_id", nullable = false, insertable=false, updatable=false)
 	private int dutId;
 	@Basic
-	@Column(name = "eq_id", nullable = false)
+	@Column(name = "eq_id", nullable = false, insertable=false, updatable=false)
 	private int eqId;
 	@ManyToOne
 	@JoinColumn(name = "dut_id", referencedColumnName = "dut_id", nullable = false)
+	@JsonBackReference
 	private DutEntity dutByDutId;
 	@ManyToOne
 	@JoinColumn(name = "eq_id", referencedColumnName = "eq_id", nullable = false)
+	@JsonBackReference
 	private EqTypeEntity eqTypeByEqId;
 
 	public int getId() {
