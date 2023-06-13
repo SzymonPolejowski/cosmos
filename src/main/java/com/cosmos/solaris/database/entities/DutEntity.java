@@ -9,6 +9,9 @@ import java.util.Objects;
 @Entity
 @Table(name = "dut", schema = "Solaris")
 public class DutEntity {
+	public DutEntity() {
+	}
+
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "dut_id", nullable = false)
@@ -69,33 +72,33 @@ public class DutEntity {
 	@Basic
 	@Column(name = "motherboard_serial_number", nullable = true, length = 255)
 	private String motherboardSerialNumber;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name = "project_id", referencedColumnName = "project_id")
-	@JsonManagedReference
+	@JsonBackReference(value = "projects")
 	@JsonUnwrapped
 	private ProjectsEntity projectsByProjectId;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "controller_id", referencedColumnName = "controller_id")
-	@JsonManagedReference
+	@JsonBackReference(value = "controllers")
 	@JsonProperty("controller")
 	private ControllersEntity controllersByControllerId;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "wps_id", referencedColumnName = "wps_id")
-	@JsonManagedReference
+	@JsonBackReference(value = "wps")
 	@JsonUnwrapped
 	private PowerSwitchesEntity powerSwitchesByWpsId;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "os_id", referencedColumnName = "os_id")
-	@JsonManagedReference
+	@JsonBackReference(value = "os")
 	@JsonUnwrapped
 	private OperatingSystemsEntity operatingSystemsByOsId;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "motherboard_model_id", referencedColumnName = "motherboard_model_id")
-	@JsonManagedReference
+	@JsonBackReference(value = "mobo")
 	@JsonUnwrapped
 	private MotherboardsEntity motherboardsByMotherboardModelId;
-	@OneToMany(mappedBy = "dutByDutId")
-	@JsonManagedReference
+	@OneToMany(mappedBy = "dutByDutId", cascade=CascadeType.ALL)
+	@JsonManagedReference(value = "eqdut")
 	@JsonProperty("equipment")
 	private Collection<EqLinksEntity> eqLinksByDutId;
 

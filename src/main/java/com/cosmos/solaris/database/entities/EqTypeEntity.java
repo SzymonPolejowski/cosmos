@@ -2,6 +2,7 @@ package com.cosmos.solaris.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -18,8 +19,8 @@ public class EqTypeEntity {
 	@Basic
 	@Column(name = "name", nullable = false, length = -1)
 	private String name;
-	@OneToMany(mappedBy = "eqTypeByEqId")
-	@JsonBackReference
+	@OneToMany(mappedBy = "eqTypeByEqId", cascade=CascadeType.ALL)
+	@JsonManagedReference(value = "eqid")
 	private Collection<EqLinksEntity> eqLinksByEqId;
 
 	public int getEqId() {
@@ -36,6 +37,9 @@ public class EqTypeEntity {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public EqTypeEntity() {
 	}
 
 	@Override

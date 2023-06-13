@@ -2,6 +2,7 @@ package com.cosmos.solaris.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -20,9 +21,12 @@ public class ProjectsEntity {
 	@Column(name = "name", nullable = true, length = -1)
 	@JsonProperty("projectName")
 	private String name;
-	@OneToMany(mappedBy = "projectsByProjectId")
-	@JsonBackReference
+	@OneToMany(mappedBy = "projectsByProjectId", cascade=CascadeType.ALL)
+	@JsonManagedReference(value = "projects")
 	private Collection<DutEntity> dutsByProjectId;
+
+	public ProjectsEntity() {
+	}
 
 	public int getProjectId() {
 		return projectId;
@@ -45,7 +49,7 @@ public class ProjectsEntity {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		ProjectsEntity that = (ProjectsEntity) o;
-		return projectId == that.projectId && Objects.equals(name, that.name);
+		return Objects.equals(name, that.name);
 	}
 
 	@Override

@@ -21,15 +21,17 @@ public class EqLinksEntity {
 	@Column(name = "eq_id", nullable = false, insertable=false, updatable=false)
 	@JsonIgnore
 	private int eqId;
-	@ManyToOne
-	@JoinColumn(name = "dut_id", referencedColumnName = "dut_id", nullable = false)
-	@JsonBackReference
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "dut_id", referencedColumnName = "dut_id", nullable = true)
+	@JsonBackReference(value = "eqdut")
 	private DutEntity dutByDutId;
-	@ManyToOne
-	@JoinColumn(name = "eq_id", referencedColumnName = "eq_id", nullable = false)
-	@JsonManagedReference
-	@JsonUnwrapped
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "eq_id", referencedColumnName = "eq_id", nullable = true)
+	@JsonBackReference(value = "eqid")
 	private EqTypeEntity eqTypeByEqId;
+
+	public EqLinksEntity() {
+	}
 
 	public int getId() {
 		return id;

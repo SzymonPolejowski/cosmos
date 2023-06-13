@@ -2,6 +2,7 @@ package com.cosmos.solaris.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -27,9 +28,12 @@ public class ControllersEntity {
 	@Basic
 	@Column(name = "description", nullable = true, length = -1)
 	private String description;
-	@OneToMany(mappedBy = "controllersByControllerId")
-	@JsonBackReference
+	@OneToMany(mappedBy = "controllersByControllerId", cascade=CascadeType.ALL)
+	@JsonManagedReference(value = "controllers")
 	private Collection<DutEntity> dutsByControllerId;
+
+	public ControllersEntity() {
+	}
 
 	public int getControllerId() {
 		return controllerId;

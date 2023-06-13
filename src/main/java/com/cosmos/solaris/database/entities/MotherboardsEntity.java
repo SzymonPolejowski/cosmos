@@ -2,6 +2,7 @@ package com.cosmos.solaris.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -20,8 +21,8 @@ public class MotherboardsEntity {
 	@Column(name = "model", nullable = true, length = -1)
 	@JsonProperty("motherboardModel")
 	private String model;
-	@OneToMany(mappedBy = "motherboardsByMotherboardModelId")
-	@JsonBackReference
+	@OneToMany(mappedBy = "motherboardsByMotherboardModelId", cascade=CascadeType.ALL)
+	@JsonManagedReference(value = "mobo")
 	private Collection<DutEntity> dutsByMotherboardModelId;
 
 	public int getMotherboardModelId() {
@@ -40,12 +41,15 @@ public class MotherboardsEntity {
 		this.model = model;
 	}
 
+	public MotherboardsEntity() {
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		MotherboardsEntity that = (MotherboardsEntity) o;
-		return motherboardModelId == that.motherboardModelId && Objects.equals(model, that.model);
+		return Objects.equals(model, that.model);
 	}
 
 	@Override

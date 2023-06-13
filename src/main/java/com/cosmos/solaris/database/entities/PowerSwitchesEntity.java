@@ -2,6 +2,7 @@ package com.cosmos.solaris.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -20,8 +21,8 @@ public class PowerSwitchesEntity {
 	@Column(name = "ip_adress", nullable = true, length = 255)
 	@JsonProperty("wpsIp")
 	private String ipAdress;
-	@OneToMany(mappedBy = "powerSwitchesByWpsId")
-	@JsonBackReference
+	@OneToMany(mappedBy = "powerSwitchesByWpsId", cascade=CascadeType.ALL)
+	@JsonManagedReference(value = "wps")
 	private Collection<DutEntity> dutsByWpsId;
 
 	public int getWpsId() {
@@ -40,12 +41,15 @@ public class PowerSwitchesEntity {
 		this.ipAdress = ipAdress;
 	}
 
+	public PowerSwitchesEntity() {
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		PowerSwitchesEntity that = (PowerSwitchesEntity) o;
-		return wpsId == that.wpsId && Objects.equals(ipAdress, that.ipAdress);
+		return Objects.equals(ipAdress, that.ipAdress);
 	}
 
 	@Override

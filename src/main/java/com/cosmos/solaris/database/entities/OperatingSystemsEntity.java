@@ -2,6 +2,7 @@ package com.cosmos.solaris.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -20,8 +21,8 @@ public class OperatingSystemsEntity {
 	@Column(name = "name", nullable = true, length = -1)
 	@JsonProperty("operatingSystem")
 	private String name;
-	@OneToMany(mappedBy = "operatingSystemsByOsId")
-	@JsonBackReference
+	@OneToMany(mappedBy = "operatingSystemsByOsId", cascade=CascadeType.ALL)
+	@JsonManagedReference(value = "os")
 	private Collection<DutEntity> dutsByOsId;
 
 	public int getOsId() {
@@ -40,12 +41,15 @@ public class OperatingSystemsEntity {
 		this.name = name;
 	}
 
+	public OperatingSystemsEntity() {
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		OperatingSystemsEntity that = (OperatingSystemsEntity) o;
-		return osId == that.osId && Objects.equals(name, that.name);
+		return Objects.equals(name, that.name);
 	}
 
 	@Override
