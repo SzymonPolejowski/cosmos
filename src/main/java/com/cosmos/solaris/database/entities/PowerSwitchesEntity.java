@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "power_switches", schema = "Solaris")
-public class PowerSwitchesEntity {
+public class PowerSwitchesEntity implements DBEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "wps_id", nullable = false)

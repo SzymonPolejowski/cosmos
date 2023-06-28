@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "operating_systems", schema = "Solaris")
-public class OperatingSystemsEntity {
+public class OperatingSystemsEntity implements DBEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "os_id", nullable = false)

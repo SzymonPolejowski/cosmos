@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "eq_type", schema = "Solaris")
-public class EqTypeEntity {
+public class EqTypeEntity implements DBEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "eq_id", nullable = false)

@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "projects", schema = "Solaris")
-public class ProjectsEntity {
+public class ProjectsEntity implements DBEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "project_id", nullable = false)

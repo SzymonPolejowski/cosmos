@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "eq_links", schema = "Solaris")
-public class EqLinksEntity {
+public class EqLinksEntity implements DBEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "ID", nullable = false)

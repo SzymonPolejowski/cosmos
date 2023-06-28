@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.cosmos.solaris.controllers.util.entityParser.parseEntity;
+
 @RestController
 public class DutController {
 	DutJPARepository dutJPARepository;
@@ -47,13 +49,7 @@ public class DutController {
 	@Transactional(value = Transactional.TxType.REQUIRES_NEW)
 	public void createDut(@RequestBody DutEntity dut){
 		//check for existing rows for ManyToOne joins
-		for (ProjectsEntity temp :
-				projectsJPARepository.findAll()) {
-			if (dut.getProjectsByProjectId().equals(temp)){
-				dut.setProjectsByProjectId(temp);
-				break;
-			}
-		}
+		dut.setProjectsByProjectId((ProjectsEntity) parseEntity(dut.getProjectsByProjectId(), projectsJPARepository));
 		for (OperatingSystemsEntity temp :
 				operatingSystemsJPARepository.findAll()) {
 			if (dut.getOperatingSystemsByOsId().equals(temp)){
@@ -74,6 +70,7 @@ public class DutController {
 				dut.setMotherboardsByMotherboardModelId(temp);
 			}
 		}
+
 
 		//save to database
 		dutJPARepository.save(dut);

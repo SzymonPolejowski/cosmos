@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "motherboards", schema = "Solaris")
-public class MotherboardsEntity {
+public class MotherboardsEntity implements DBEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "motherboard_model_id", nullable = false)
