@@ -23,7 +23,7 @@
     </Transition>
   </div>
   <footer>
-  Make by 🛸 and ETH FW Tech Team: dpiotr1x and spolejox
+  Make by 🛸 and es poleho and siemaqrwa
   </footer>
 </div>
 </template>
