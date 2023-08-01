@@ -1,0 +1,78 @@
+// COLORS
+
+// Palete
+$primary_color: #1f2336;
+$secondary_color: #171a2b;
+$third_color: #676b80;
+$dark_color: darken($primary_color, 7.5%);
+
+$white: #f7f7fc;
+$grey: #999;
+$dark_grey: #111;
+$black: #000;
+$table_color: #2C2C2C;
+$table_header_color: #414141;
+$table_border_color: #504F4F;
+$copypin_color: #5E616E;
+
+$red: #b30e0e;
+$dark_red: #830a0a;
+$green: #028802;
+$blue: #4a5fc9;
+
+$pin_green: #75FF5E;
+$pin_red: #FF5E5E;
+$pin_yellow: #FFEF5E;
+$pin_blue: #5EFFEC;
+
+// Usage
+$font_color: $white;
+$bg_color: $primary_color;
+$sidebar_color: $secondary_color;
+$alert_color: $dark_red;
+$popup_color: $dark_grey;
+$border_color: $third_color;
+
+
+// IMAGES
+
+$home_image: url("@/assets/vectors/star-bg.svg");
+$edit_image: url("@/assets/vectors/edit-bg.svg");
+$info_image: url("@/assets/vectors/info-bg.svg");
+$arrow_image: url("@/assets/vectors/arrow-up.svg");
+$searchbar_image: url('@/assets/vectors/star-searchbar.svg');
+$clipboard_image: url('@/assets/vectors/clipboard-solid.svg');
+$viewer_image: url('@/assets/vectors/viewer-bg.svg');
+
+// GENERAL
+
+// Border
+$border_radius: 18px;
+$border_radius_small: 8px;
+$border_radius_max: 99999999px;
+$border: 1px $border_color solid;
+$table_border: 1px solid #504F4F;
+
+// Paddings
+$s_padding: .5rem 1rem;
+$m_padding: 1rem 2rem;
+$l_padding: 2rem;
+$xl_padding: 4rem;
+
+
+//Outline
+@mixin outline {
+    &:focus-visible {
+        outline: 2px solid;
+        outline-offset: .25rem;
+        outline-color: #8D93AB;
+    }
+}
+
+@mixin outline-within {
+    &:focus-within {
+        outline: 2px solid;
+        outline-offset: .25rem;
+        outline-color: #8D93AB;
+    }
+}

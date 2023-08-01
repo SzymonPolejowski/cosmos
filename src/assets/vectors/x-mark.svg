@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   clip-rule="evenodd"
+   fill-rule="evenodd"
+   stroke-linejoin="round"
+   stroke-miterlimit="2"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="x-mark.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="9.8333333"
+     inkscape:cx="11.898305"
+     inkscape:cy="12"
+     inkscape:window-width="1920"
+     inkscape:window-height="1131"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     d="m 12,10.637133 7.29761,-7.298886 c 0.186301,-0.1863003 0.432574,-0.2794504 0.677571,-0.2794504 0.515516,0 0.957022,0.4134334 0.957022,0.9557458 0,0.2462735 -0.09315,0.4912712 -0.27945,0.6788474 L 13.353867,11.991 l 7.29761,7.29761 c 0.187576,0.187576 0.280726,0.432574 0.280726,0.677571 0,0.544865 -0.445334,0.957022 -0.957022,0.957022 -0.244997,0 -0.49127,-0.09315 -0.677571,-0.27945 L 12,13.346143 4.7023898,20.643753 c -0.1863002,0.1863 -0.4325739,0.27945 -0.6775714,0.27945 -0.5116877,0 -0.9570218,-0.412157 -0.9570218,-0.957022 0,-0.244997 0.09315,-0.489995 0.2807264,-0.677571 L 10.646133,11.991 3.347247,4.6933898 C 3.1609467,4.5058136 3.0677966,4.2608159 3.0677966,4.0145424 c 0,-0.5423124 0.441506,-0.9557458 0.9570218,-0.9557458 0.2449975,0 0.4912712,0.09315 0.6775714,0.2794504 z"
+     id="path2"
+     style="fill:#676767;fill-opacity:1;stroke-width:1.27603" />
+</svg>
