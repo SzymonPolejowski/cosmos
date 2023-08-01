@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "dut", schema = "Solaris")
-public class DutEntity implements DBEntity{
+public class DutEntity implements DatabaseEntity {
 	public DutEntity() {
 	}
 

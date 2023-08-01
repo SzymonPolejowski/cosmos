@@ -1,16 +1,15 @@
 package com.cosmos.solaris.controllers.util;
 
-import com.cosmos.solaris.database.entities.DBEntity;
-import com.cosmos.solaris.database.entities.ProjectsEntity;
+import com.cosmos.solaris.database.entities.DatabaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public abstract class entityParser {
-	static public DBEntity parseEntity(DBEntity entity, JpaRepository repository){
-
+	//This checks for existing entity in database, helpful whn handling ManyToOne joins
+	static public DatabaseEntity parseEntity(DatabaseEntity entity, JpaRepository repository){
 		for (Object temp:
 				repository.findAll()) {
 			if (entity.equals(temp)){
-				return (DBEntity) temp;
+				return (DatabaseEntity) temp;
 			}
 		}
 		return entity;

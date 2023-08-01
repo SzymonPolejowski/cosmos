@@ -1,6 +1,5 @@
 package com.cosmos.solaris.database.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "operating_systems", schema = "Solaris")
-public class OperatingSystemsEntity implements DBEntity{
+public class OperatingSystemsEntity implements DatabaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "os_id", nullable = false)

@@ -1,6 +1,5 @@
 package com.cosmos.solaris.database.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -10,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "eq_type", schema = "Solaris")
-public class EqTypeEntity implements DBEntity{
+public class EqTypeEntity implements DatabaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "eq_id", nullable = false)

@@ -50,13 +50,8 @@ public class DutController {
 	public void createDut(@RequestBody DutEntity dut){
 		//check for existing rows for ManyToOne joins
 		dut.setProjectsByProjectId((ProjectsEntity) parseEntity(dut.getProjectsByProjectId(), projectsJPARepository));
-		for (OperatingSystemsEntity temp :
-				operatingSystemsJPARepository.findAll()) {
-			if (dut.getOperatingSystemsByOsId().equals(temp)){
-				dut.setOperatingSystemsByOsId(temp);
-				break;
-			}
-		}
+		dut.setOperatingSystemsByOsId((OperatingSystemsEntity) parseEntity(dut.getOperatingSystemsByOsId(), operatingSystemsJPARepository));
+		
 		for (PowerSwitchesEntity temp :
 				powerSwitchesJPARepository.findAll()) {
 			if (dut.getPowerSwitchesByWpsId().equals(temp)){
