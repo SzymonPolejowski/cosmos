@@ -128,37 +128,37 @@ export const store = reactive({
     {
       id: 0,
       icon: "🚀",
-      name: "BRC_01",
-      project: "CPK",
+      name: "BRUH_01",
+      project: "BRUH",
       status: 2,
       reserver: null,
       blocker: null,
-      owner: "psierko",
+      owner: "siekera",
       DUT: {
-        IP: "10.211.236.157",
-        SN: "MXMR00640108",
-        MAC: "d1:25:66:ef:68:67",
+        IP: "13.123.123.123",
+        SN: "MXDJ6042137",
+        MAC: "d3:23:56:f1:32:a3",
         BMC: null,
         KVM: null,
       },
       Controller: {
-        IP: "10.211.236.50",
-        MAC: "22:08:ae:e7:2c:de",
+        IP: "32.124.264.12",
+        MAC: "12:32:54:21:c3:d3",
         SN: null,
       },
       WPS: {
-        IP: "10.211.236.25",
+        IP: "54.231.643.13",
         Socket: "8",
       },
       Inventory: [
         {
-          name: "Niantic",
+          name: "Tytanic",
         },
         {
           name: "LauterBach",
         },
       ],
-      desc: "LinkPartner Niantic - Interface name: ens6f0\n\nLauterbach PowerSwitch: 10.211.236.26\n\nLauterbach:\n\nBox S/N: E16050029508\nCable S/N: C18060251456\nDebugger Part: LA-3505 + LA-4570\n\nLoopback\n\nCPU S/N: D08X7Q7400379",
+      desc: "LinkPartner Tytanic - Interface name: ens6f0",
     }
   ],
 

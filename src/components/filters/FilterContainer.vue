@@ -20,7 +20,7 @@ export default {
     },
     data() {
         return {
-            Projects: ["CPK", "CVL", "MEV", "Race"]
+            Projects: ["BRUH", "SIS", "BOMBA"]
         }
     },
     computed: {
