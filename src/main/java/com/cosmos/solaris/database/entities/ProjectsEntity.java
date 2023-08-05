@@ -60,7 +60,7 @@ public class ProjectsEntity implements DatabaseEntity {
 		return platformsByProjectId;
 	}
 
-	public void setPlatformsByProjectId(Collection<PlatformsEntity> dutsByProjectId) {
-		this.platformsByProjectId = dutsByProjectId;
+	public void setPlatformsByProjectId(Collection<PlatformsEntity> platformsByProjectId) {
+		this.platformsByProjectId = platformsByProjectId;
 	}
 }

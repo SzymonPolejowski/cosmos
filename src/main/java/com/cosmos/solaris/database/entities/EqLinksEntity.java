@@ -45,8 +45,8 @@ public class EqLinksEntity implements DatabaseEntity {
 		return platformId;
 	}
 
-	public void setPlatformId(int dutId) {
-		this.platformId = dutId;
+	public void setPlatformId(int platformId) {
+		this.platformId = platformId;
 	}
 
 	public int getEqId() {
@@ -74,8 +74,8 @@ public class EqLinksEntity implements DatabaseEntity {
 		return platformByPlatformId;
 	}
 
-	public void setPlatformByPlatformId(PlatformsEntity dutByDutId) {
-		this.platformByPlatformId = dutByDutId;
+	public void setPlatformByPlatformId(PlatformsEntity platformByPlatformId) {
+		this.platformByPlatformId = platformByPlatformId;
 	}
 
 	public EqTypeEntity getEqTypeByEqId() {

@@ -47,27 +47,27 @@ public class PlatformController {
 
 	@PostMapping("/platforms")
 	@Transactional(value = Transactional.TxType.REQUIRES_NEW)
-	public void createPlatform(@RequestBody PlatformsEntity dut){
+	public void createPlatform(@RequestBody PlatformsEntity platform){
 		//check for existing rows for ManyToOne joins
-		dut.setProjectsByProjectId((ProjectsEntity) parseEntity(dut.getProjectsByProjectId(), projectsJPARepository));
-		dut.setOperatingSystemsByOsId((OperatingSystemsEntity) parseEntity(dut.getOperatingSystemsByOsId(), operatingSystemsJPARepository));
+		platform.setProjectsByProjectId((ProjectsEntity) parseEntity(platform.getProjectsByProjectId(), projectsJPARepository));
+		platform.setOperatingSystemsByOsId((OperatingSystemsEntity) parseEntity(platform.getOperatingSystemsByOsId(), operatingSystemsJPARepository));
 		
 		for (PowerSwitchesEntity temp :
 				powerSwitchesJPARepository.findAll()) {
-			if (dut.getPowerSwitchesByWpsId().equals(temp)){
-				dut.setPowerSwitchesByWpsId(temp);
+			if (platform.getPowerSwitchesByWpsId().equals(temp)){
+				platform.setPowerSwitchesByWpsId(temp);
 				break;
 			}
 		}
 		for (MotherboardsEntity temp:
 		     motherboardsJPARepository.findAll()) {
-			if (dut.getMotherboardsByMotherboardModelId().equals(temp)){
-				dut.setMotherboardsByMotherboardModelId(temp);
+			if (platform.getMotherboardsByMotherboardModelId().equals(temp)){
+				platform.setMotherboardsByMotherboardModelId(temp);
 			}
 		}
 
 
 		//save to database
-		platformJPARepository.save(dut);
+		platformJPARepository.save(platform);
 	}
 }

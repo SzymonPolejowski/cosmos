@@ -98,16 +98,16 @@ public class PlatformsEntity implements DatabaseEntity {
 	@JsonUnwrapped
 	private MotherboardsEntity motherboardsByMotherboardModelId;
 	@OneToMany(mappedBy = "platformByPlatformId", cascade=CascadeType.ALL)
-	@JsonManagedReference(value = "eqdut")
+	@JsonManagedReference(value = "eqplatform")
 	@JsonProperty("equipment")
-	private Collection<EqLinksEntity> eqLinksByDutId;
+	private Collection<EqLinksEntity> eqLinksByPlatformId;
 
 	public int getPlatformId() {
 		return platformId;
 	}
 
-	public void setPlatformId(int dutId) {
-		this.platformId = dutId;
+	public void setPlatformId(int platformId) {
+		this.platformId = platformId;
 	}
 
 	public String getName() {
@@ -299,11 +299,11 @@ public class PlatformsEntity implements DatabaseEntity {
 		this.motherboardsByMotherboardModelId = motherboardsByMotherboardModelId;
 	}
 
-	public Collection<EqLinksEntity> getEqLinksByDutId() {
-		return eqLinksByDutId;
+	public Collection<EqLinksEntity> getEqLinksByPlatformId() {
+		return eqLinksByPlatformId;
 	}
 
-	public void setEqLinksByDutId(Collection<EqLinksEntity> eqLinksByDutId) {
-		this.eqLinksByDutId = eqLinksByDutId;
+	public void setEqLinksByPlatformId(Collection<EqLinksEntity> eqLinksByPlatformId) {
+		this.eqLinksByPlatformId = eqLinksByPlatformId;
 	}
 }
