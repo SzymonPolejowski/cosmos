@@ -22,7 +22,7 @@ public class PowerSwitchesEntity implements DatabaseEntity {
 	private String ipAdress;
 	@OneToMany(mappedBy = "powerSwitchesByWpsId", cascade=CascadeType.ALL)
 	@JsonManagedReference(value = "wps")
-	private Collection<DutEntity> dutsByWpsId;
+	private Collection<PlatformEntity> dutsByWpsId;
 
 	public int getWpsId() {
 		return wpsId;
@@ -56,11 +56,11 @@ public class PowerSwitchesEntity implements DatabaseEntity {
 		return Objects.hash(wpsId, ipAdress);
 	}
 
-	public Collection<DutEntity> getDutsByWpsId() {
+	public Collection<PlatformEntity> getDutsByWpsId() {
 		return dutsByWpsId;
 	}
 
-	public void setDutsByWpsId(Collection<DutEntity> dutsByWpsId) {
+	public void setDutsByWpsId(Collection<PlatformEntity> dutsByWpsId) {
 		this.dutsByWpsId = dutsByWpsId;
 	}
 }

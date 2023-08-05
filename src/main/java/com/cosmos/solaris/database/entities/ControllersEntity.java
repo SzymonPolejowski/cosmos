@@ -29,7 +29,7 @@ public class ControllersEntity implements DatabaseEntity {
 	private String description;
 	@OneToMany(mappedBy = "controllersByControllerId", cascade=CascadeType.ALL)
 	@JsonManagedReference(value = "controllers")
-	private Collection<DutEntity> dutsByControllerId;
+	private Collection<PlatformEntity> dutsByControllerId;
 
 	public ControllersEntity() {
 	}
@@ -87,11 +87,11 @@ public class ControllersEntity implements DatabaseEntity {
 		return Objects.hash(controllerId, serialNumber, ipAdress, macAdress, description);
 	}
 
-	public Collection<DutEntity> getDutsByControllerId() {
+	public Collection<PlatformEntity> getDutsByControllerId() {
 		return dutsByControllerId;
 	}
 
-	public void setDutsByControllerId(Collection<DutEntity> dutsByControllerId) {
+	public void setDutsByControllerId(Collection<PlatformEntity> dutsByControllerId) {
 		this.dutsByControllerId = dutsByControllerId;
 	}
 }

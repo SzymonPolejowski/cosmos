@@ -22,7 +22,7 @@ public class ProjectsEntity implements DatabaseEntity {
 	private String name;
 	@OneToMany(mappedBy = "projectsByProjectId", cascade=CascadeType.ALL)
 	@JsonManagedReference(value = "projects")
-	private Collection<DutEntity> dutsByProjectId;
+	private Collection<PlatformEntity> dutsByProjectId;
 
 	public ProjectsEntity() {
 	}
@@ -56,11 +56,11 @@ public class ProjectsEntity implements DatabaseEntity {
 		return Objects.hash(projectId, name);
 	}
 
-	public Collection<DutEntity> getDutsByProjectId() {
+	public Collection<PlatformEntity> getDutsByProjectId() {
 		return dutsByProjectId;
 	}
 
-	public void setDutsByProjectId(Collection<DutEntity> dutsByProjectId) {
+	public void setDutsByProjectId(Collection<PlatformEntity> dutsByProjectId) {
 		this.dutsByProjectId = dutsByProjectId;
 	}
 }

@@ -14,17 +14,17 @@ public class EqLinksEntity implements DatabaseEntity {
 	@JsonIgnore
 	private int id;
 	@Basic
-	@Column(name = "dut_id", nullable = false, insertable=false, updatable=false)
+	@Column(name = "platform_id", nullable = false, insertable=false, updatable=false)
 	@JsonIgnore
-	private int dutId;
+	private int platformId;
 	@Basic
 	@Column(name = "eq_id", nullable = false, insertable=false, updatable=false)
 	@JsonIgnore
 	private int eqId;
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "dut_id", referencedColumnName = "dut_id", nullable = true)
-	@JsonBackReference(value = "eqdut")
-	private DutEntity dutByDutId;
+	@JoinColumn(name = "platform_id", referencedColumnName = "platform_id", nullable = true)
+	@JsonBackReference(value = "eqPlatform")
+	private PlatformEntity platformByPlatformId;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "eq_id", referencedColumnName = "eq_id", nullable = true)
 	@JsonBackReference(value = "eqid")
@@ -41,12 +41,12 @@ public class EqLinksEntity implements DatabaseEntity {
 		this.id = id;
 	}
 
-	public int getDutId() {
-		return dutId;
+	public int getPlatformId() {
+		return platformId;
 	}
 
-	public void setDutId(int dutId) {
-		this.dutId = dutId;
+	public void setPlatformId(int dutId) {
+		this.platformId = dutId;
 	}
 
 	public int getEqId() {
@@ -62,20 +62,20 @@ public class EqLinksEntity implements DatabaseEntity {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		EqLinksEntity that = (EqLinksEntity) o;
-		return id == that.id && dutId == that.dutId && eqId == that.eqId;
+		return id == that.id && platformId == that.platformId && eqId == that.eqId;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, dutId, eqId);
+		return Objects.hash(id, platformId, eqId);
 	}
 
-	public DutEntity getDutByDutId() {
-		return dutByDutId;
+	public PlatformEntity getPlatformByPlatformId() {
+		return platformByPlatformId;
 	}
 
-	public void setDutByDutId(DutEntity dutByDutId) {
-		this.dutByDutId = dutByDutId;
+	public void setPlatformByPlatformId(PlatformEntity dutByDutId) {
+		this.platformByPlatformId = dutByDutId;
 	}
 
 	public EqTypeEntity getEqTypeByEqId() {

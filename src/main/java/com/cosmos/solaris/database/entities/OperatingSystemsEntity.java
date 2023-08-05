@@ -22,7 +22,7 @@ public class OperatingSystemsEntity implements DatabaseEntity {
 	private String name;
 	@OneToMany(mappedBy = "operatingSystemsByOsId", cascade=CascadeType.ALL)
 	@JsonManagedReference(value = "os")
-	private Collection<DutEntity> dutsByOsId;
+	private Collection<PlatformEntity> dutsByOsId;
 
 	public int getOsId() {
 		return osId;
@@ -56,11 +56,11 @@ public class OperatingSystemsEntity implements DatabaseEntity {
 		return Objects.hash(osId, name);
 	}
 
-	public Collection<DutEntity> getDutsByOsId() {
+	public Collection<PlatformEntity> getDutsByOsId() {
 		return dutsByOsId;
 	}
 
-	public void setDutsByOsId(Collection<DutEntity> dutsByOsId) {
+	public void setDutsByOsId(Collection<PlatformEntity> dutsByOsId) {
 		this.dutsByOsId = dutsByOsId;
 	}
 }
