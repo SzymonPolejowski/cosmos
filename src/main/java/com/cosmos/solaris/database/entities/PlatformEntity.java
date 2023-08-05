@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "dut", schema = "Solaris")
+@Table(name = "platform", schema = "Solaris")
 public class PlatformEntity implements DatabaseEntity {
 	public PlatformEntity() {
 	}
