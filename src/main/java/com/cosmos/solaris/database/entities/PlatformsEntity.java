@@ -7,9 +7,9 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "platform", schema = "Solaris")
-public class PlatformEntity implements DatabaseEntity {
-	public PlatformEntity() {
+@Table(name = "platforms", schema = "Solaris")
+public class PlatformsEntity implements DatabaseEntity {
+	public PlatformsEntity() {
 	}
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -250,8 +250,8 @@ public class PlatformEntity implements DatabaseEntity {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		PlatformEntity platformEntity = (PlatformEntity) o;
-		return platformId == platformEntity.platformId && projectId == platformEntity.projectId && state == platformEntity.state && controllerId == platformEntity.controllerId && wpsId == platformEntity.wpsId && outlet == platformEntity.outlet && osId == platformEntity.osId && motherboardModelId == platformEntity.motherboardModelId && Objects.equals(name, platformEntity.name) && Objects.equals(ipAdress, platformEntity.ipAdress) && Objects.equals(owner, platformEntity.owner) && Objects.equals(takenBy, platformEntity.takenBy) && Objects.equals(description, platformEntity.description) && Objects.equals(macAdress, platformEntity.macAdress) && Objects.equals(kvmIp, platformEntity.kvmIp) && Objects.equals(bmcAdress, platformEntity.bmcAdress) && Objects.equals(location, platformEntity.location) && Objects.equals(motherboardSerialNumber, platformEntity.motherboardSerialNumber);
+		PlatformsEntity platformsEntity = (PlatformsEntity) o;
+		return platformId == platformsEntity.platformId && projectId == platformsEntity.projectId && state == platformsEntity.state && controllerId == platformsEntity.controllerId && wpsId == platformsEntity.wpsId && outlet == platformsEntity.outlet && osId == platformsEntity.osId && motherboardModelId == platformsEntity.motherboardModelId && Objects.equals(name, platformsEntity.name) && Objects.equals(ipAdress, platformsEntity.ipAdress) && Objects.equals(owner, platformsEntity.owner) && Objects.equals(takenBy, platformsEntity.takenBy) && Objects.equals(description, platformsEntity.description) && Objects.equals(macAdress, platformsEntity.macAdress) && Objects.equals(kvmIp, platformsEntity.kvmIp) && Objects.equals(bmcAdress, platformsEntity.bmcAdress) && Objects.equals(location, platformsEntity.location) && Objects.equals(motherboardSerialNumber, platformsEntity.motherboardSerialNumber);
 	}
 
 	@Override

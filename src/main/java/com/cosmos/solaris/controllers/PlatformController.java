@@ -31,14 +31,14 @@ public class PlatformController {
 	}
 
 	@GetMapping("/platforms")
-	public List<PlatformEntity> retrievePlatforms(){
+	public List<PlatformsEntity> retrievePlatforms(){
 		return platformJPARepository.findAll();
 	}
 
 	@GetMapping("/platforms/{id}")
 	@ResponseBody
-	public PlatformEntity retrieveOne(@PathVariable int id){
-		PlatformEntity returning = platformJPARepository.findById(id).orElse(null);
+	public PlatformsEntity retrieveOne(@PathVariable int id){
+		PlatformsEntity returning = platformJPARepository.findById(id).orElse(null);
 		if(returning == null){
 			throw new FieldNotFoundException("Field with requested id: " + id + " was not found.");
 		}
@@ -47,7 +47,7 @@ public class PlatformController {
 
 	@PostMapping("/platforms")
 	@Transactional(value = Transactional.TxType.REQUIRES_NEW)
-	public void createPlatform(@RequestBody PlatformEntity dut){
+	public void createPlatform(@RequestBody PlatformsEntity dut){
 		//check for existing rows for ManyToOne joins
 		dut.setProjectsByProjectId((ProjectsEntity) parseEntity(dut.getProjectsByProjectId(), projectsJPARepository));
 		dut.setOperatingSystemsByOsId((OperatingSystemsEntity) parseEntity(dut.getOperatingSystemsByOsId(), operatingSystemsJPARepository));

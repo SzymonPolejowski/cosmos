@@ -22,7 +22,7 @@ public class MotherboardsEntity implements DatabaseEntity {
 	private String model;
 	@OneToMany(mappedBy = "motherboardsByMotherboardModelId", cascade=CascadeType.ALL)
 	@JsonManagedReference(value = "mobo")
-	private Collection<PlatformEntity> platformsByMotherboardModelId;
+	private Collection<PlatformsEntity> platformsByMotherboardModelId;
 
 	public int getMotherboardModelId() {
 		return motherboardModelId;
@@ -56,11 +56,11 @@ public class MotherboardsEntity implements DatabaseEntity {
 		return Objects.hash(motherboardModelId, model);
 	}
 
-	public Collection<PlatformEntity> getPlatformsByMotherboardModelId() {
+	public Collection<PlatformsEntity> getPlatformsByMotherboardModelId() {
 		return platformsByMotherboardModelId;
 	}
 
-	public void setPlatformsByMotherboardModelId(Collection<PlatformEntity> dutsByMotherboardModelId) {
-		this.platformsByMotherboardModelId = dutsByMotherboardModelId;
+	public void setPlatformsByMotherboardModelId(Collection<PlatformsEntity> platformsByMotherboardModelId) {
+		this.platformsByMotherboardModelId = platformsByMotherboardModelId;
 	}
 }

@@ -24,7 +24,7 @@ public class EqLinksEntity implements DatabaseEntity {
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "platform_id", referencedColumnName = "platform_id", nullable = true)
 	@JsonBackReference(value = "eqPlatform")
-	private PlatformEntity platformByPlatformId;
+	private PlatformsEntity platformByPlatformId;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "eq_id", referencedColumnName = "eq_id", nullable = true)
 	@JsonBackReference(value = "eqid")
@@ -70,11 +70,11 @@ public class EqLinksEntity implements DatabaseEntity {
 		return Objects.hash(id, platformId, eqId);
 	}
 
-	public PlatformEntity getPlatformByPlatformId() {
+	public PlatformsEntity getPlatformByPlatformId() {
 		return platformByPlatformId;
 	}
 
-	public void setPlatformByPlatformId(PlatformEntity dutByDutId) {
+	public void setPlatformByPlatformId(PlatformsEntity dutByDutId) {
 		this.platformByPlatformId = dutByDutId;
 	}
 
