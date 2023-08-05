@@ -17,9 +17,9 @@ public class PowerSwitchesEntity implements DatabaseEntity {
 	@JsonIgnore
 	private int wpsId;
 	@Basic
-	@Column(name = "ip_adress", nullable = true, length = 255)
+	@Column(name = "ip_address", nullable = true, length = 255)
 	@JsonProperty("wpsIp")
-	private String ipAdress;
+	private String ipAddress;
 	@OneToMany(mappedBy = "powerSwitchesByWpsId", cascade=CascadeType.ALL)
 	@JsonManagedReference(value = "wps")
 	private Collection<PlatformsEntity> platformsByWpsId;
@@ -32,12 +32,12 @@ public class PowerSwitchesEntity implements DatabaseEntity {
 		this.wpsId = wpsId;
 	}
 
-	public String getIpAdress() {
-		return ipAdress;
+	public String getIpAddress() {
+		return ipAddress;
 	}
 
-	public void setIpAdress(String ipAdress) {
-		this.ipAdress = ipAdress;
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
 	}
 
 	public PowerSwitchesEntity() {
@@ -48,12 +48,12 @@ public class PowerSwitchesEntity implements DatabaseEntity {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		PowerSwitchesEntity that = (PowerSwitchesEntity) o;
-		return Objects.equals(ipAdress, that.ipAdress);
+		return Objects.equals(ipAddress, that.ipAddress);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(wpsId, ipAdress);
+		return Objects.hash(wpsId, ipAddress);
 	}
 
 	public Collection<PlatformsEntity> getPlatformsByWpsId() {

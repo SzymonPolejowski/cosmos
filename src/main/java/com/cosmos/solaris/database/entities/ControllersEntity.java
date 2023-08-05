@@ -19,11 +19,11 @@ public class ControllersEntity implements DatabaseEntity {
 	@Column(name = "serial_number", nullable = true, length = 255)
 	private String serialNumber;
 	@Basic
-	@Column(name = "ip_adress", nullable = true, length = 255)
-	private String ipAdress;
+	@Column(name = "ip_address", nullable = true, length = 255)
+	private String ipAddress;
 	@Basic
-	@Column(name = "mac_adress", nullable = true, length = 255)
-	private String macAdress;
+	@Column(name = "mac_address", nullable = true, length = 255)
+	private String macAddress;
 	@Basic
 	@Column(name = "description", nullable = true, length = -1)
 	private String description;
@@ -50,20 +50,20 @@ public class ControllersEntity implements DatabaseEntity {
 		this.serialNumber = serialNumber;
 	}
 
-	public String getIpAdress() {
-		return ipAdress;
+	public String getIpAddress() {
+		return ipAddress;
 	}
 
-	public void setIpAdress(String ipAdress) {
-		this.ipAdress = ipAdress;
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
 	}
 
-	public String getMacAdress() {
-		return macAdress;
+	public String getMacAddress() {
+		return macAddress;
 	}
 
-	public void setMacAdress(String macAdress) {
-		this.macAdress = macAdress;
+	public void setMacAddress(String macAddress) {
+		this.macAddress = macAddress;
 	}
 
 	public String getDescription() {
@@ -79,12 +79,12 @@ public class ControllersEntity implements DatabaseEntity {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		ControllersEntity that = (ControllersEntity) o;
-		return controllerId == that.controllerId && Objects.equals(serialNumber, that.serialNumber) && Objects.equals(ipAdress, that.ipAdress) && Objects.equals(macAdress, that.macAdress) && Objects.equals(description, that.description);
+		return controllerId == that.controllerId && Objects.equals(serialNumber, that.serialNumber) && Objects.equals(ipAddress, that.ipAddress) && Objects.equals(macAddress, that.macAddress) && Objects.equals(description, that.description);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(controllerId, serialNumber, ipAdress, macAdress, description);
+		return Objects.hash(controllerId, serialNumber, ipAddress, macAddress, description);
 	}
 
 	public Collection<PlatformsEntity> getPlatformsByControllerId() {

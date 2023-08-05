@@ -24,8 +24,8 @@ public class PlatformsEntity implements DatabaseEntity {
 	@JsonIgnore
 	private int projectId;
 	@Basic
-	@Column(name = "ip_adress", nullable = true, length = 255)
-	private String ipAdress;
+	@Column(name = "ip_address", nullable = true, length = 255)
+	private String ipAddress;
 	@Basic
 	@Column(name = "owner", nullable = true, length = -1)
 	private String owner;
@@ -43,8 +43,8 @@ public class PlatformsEntity implements DatabaseEntity {
 	@JsonIgnore
 	private int controllerId;
 	@Basic
-	@Column(name = "mac_adress", nullable = true, length = 255)
-	private String macAdress;
+	@Column(name = "mac_address", nullable = true, length = 255)
+	private String macAddress;
 	@Basic
 	@Column(name = "kvm_ip", nullable = true, length = 255)
 	private String kvmIp;
@@ -56,8 +56,8 @@ public class PlatformsEntity implements DatabaseEntity {
 	@Column(name = "outlet", nullable = false)
 	private int outlet;
 	@Basic
-	@Column(name = "bmc_adress", nullable = true, length = 255)
-	private String bmcAdress;
+	@Column(name = "bmc_address", nullable = true, length = 255)
+	private String bmcAddress;
 	@Basic
 	@Column(name = "os_id", nullable = true, insertable=false, updatable=false)
 	@JsonIgnore
@@ -126,12 +126,12 @@ public class PlatformsEntity implements DatabaseEntity {
 		this.projectId = projectId;
 	}
 
-	public String getIpAdress() {
-		return ipAdress;
+	public String getIpAddress() {
+		return ipAddress;
 	}
 
-	public void setIpAdress(String ipAdress) {
-		this.ipAdress = ipAdress;
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
 	}
 
 	public String getOwner() {
@@ -174,12 +174,12 @@ public class PlatformsEntity implements DatabaseEntity {
 		this.controllerId = controllerId;
 	}
 
-	public String getMacAdress() {
-		return macAdress;
+	public String getMacAddress() {
+		return macAddress;
 	}
 
-	public void setMacAdress(String macAdress) {
-		this.macAdress = macAdress;
+	public void setMacAddress(String macAddress) {
+		this.macAddress = macAddress;
 	}
 
 	public String getKvmIp() {
@@ -206,12 +206,12 @@ public class PlatformsEntity implements DatabaseEntity {
 		this.outlet = outlet;
 	}
 
-	public String getBmcAdress() {
-		return bmcAdress;
+	public String getBmcAddress() {
+		return bmcAddress;
 	}
 
-	public void setBmcAdress(String bmcAdress) {
-		this.bmcAdress = bmcAdress;
+	public void setBmcAddress(String bmcAddress) {
+		this.bmcAddress = bmcAddress;
 	}
 
 	public int getOsId() {
@@ -251,12 +251,12 @@ public class PlatformsEntity implements DatabaseEntity {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		PlatformsEntity platformsEntity = (PlatformsEntity) o;
-		return platformId == platformsEntity.platformId && projectId == platformsEntity.projectId && state == platformsEntity.state && controllerId == platformsEntity.controllerId && wpsId == platformsEntity.wpsId && outlet == platformsEntity.outlet && osId == platformsEntity.osId && motherboardModelId == platformsEntity.motherboardModelId && Objects.equals(name, platformsEntity.name) && Objects.equals(ipAdress, platformsEntity.ipAdress) && Objects.equals(owner, platformsEntity.owner) && Objects.equals(takenBy, platformsEntity.takenBy) && Objects.equals(description, platformsEntity.description) && Objects.equals(macAdress, platformsEntity.macAdress) && Objects.equals(kvmIp, platformsEntity.kvmIp) && Objects.equals(bmcAdress, platformsEntity.bmcAdress) && Objects.equals(location, platformsEntity.location) && Objects.equals(motherboardSerialNumber, platformsEntity.motherboardSerialNumber);
+		return platformId == platformsEntity.platformId && projectId == platformsEntity.projectId && state == platformsEntity.state && controllerId == platformsEntity.controllerId && wpsId == platformsEntity.wpsId && outlet == platformsEntity.outlet && osId == platformsEntity.osId && motherboardModelId == platformsEntity.motherboardModelId && Objects.equals(name, platformsEntity.name) && Objects.equals(ipAddress, platformsEntity.ipAddress) && Objects.equals(owner, platformsEntity.owner) && Objects.equals(takenBy, platformsEntity.takenBy) && Objects.equals(description, platformsEntity.description) && Objects.equals(macAddress, platformsEntity.macAddress) && Objects.equals(kvmIp, platformsEntity.kvmIp) && Objects.equals(bmcAddress, platformsEntity.bmcAddress) && Objects.equals(location, platformsEntity.location) && Objects.equals(motherboardSerialNumber, platformsEntity.motherboardSerialNumber);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(platformId, name, projectId, ipAdress, owner, takenBy, state, description, controllerId, macAdress, kvmIp, wpsId, outlet, bmcAdress, osId, location, motherboardModelId, motherboardSerialNumber);
+		return Objects.hash(platformId, name, projectId, ipAddress, owner, takenBy, state, description, controllerId, macAddress, kvmIp, wpsId, outlet, bmcAddress, osId, location, motherboardModelId, motherboardSerialNumber);
 	}
 
 	public ProjectsEntity getProjectsByProjectId() {
